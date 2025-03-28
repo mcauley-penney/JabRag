@@ -9,7 +9,7 @@ const __dirname = dirname(__filename);
 
 // Load your GitHub App credentials
 const APP_ID = process.env.APP_ID; // or hardcode your App ID here
-const PRIVATE_KEY_PATH = path.join(__dirname, './jabrag.2025-03-26.private-key.pem'); // Path to your downloaded .pem file
+const PRIVATE_KEY_PATH = path.join(__dirname, './jabrag.private-key.pem'); // Path to your downloaded .pem file
 
 // Read private key from file
 const privateKey = fs.readFileSync(PRIVATE_KEY_PATH, 'utf8');
