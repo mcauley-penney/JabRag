@@ -1,7 +1,8 @@
 import { graphql } from '@octokit/graphql';
 import { request } from '@octokit/request';
 import { generateGitHubAppJWT } from './jwt.js';
-
+import LLM from './llm.js';
+const llm_instant = new LLM();
 const addDiscussionComment = `
   mutation AddDiscussionComment($discussionId: ID!, $body: String!) {
     addDiscussionComment(input: {discussionId: $discussionId, body: $body}) {
@@ -53,6 +54,7 @@ export default (app) => {
 
     if (!commentBody.includes("@jabrag")) return;
 
+    var ragBody = await llm_instant.answerQuestion(commentBody);
     const jwtToken = generateGitHubAppJWT();
 
     const { data } = await request("POST /app/installations/{installation_id}/access_tokens", {
@@ -72,7 +74,7 @@ export default (app) => {
     try {
       await graphqlWithAuth(addDiscussionComment, {
         discussionId,
-        body: "😠 You are stressing me",
+        body: `${ragBody}`,
       });
       app.log.info("Response comment added.");
     } catch (error) {
