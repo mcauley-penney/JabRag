@@ -74,7 +74,7 @@ export default (app) => {
     try {
       await graphqlWithAuth(addDiscussionComment, {
         discussionId,
-        body: '${ragBody}',
+        body: `${ragBody}`,
       });
       app.log.info("Response comment added.");
     } catch (error) {
