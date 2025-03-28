@@ -1,33 +1,22 @@
-# jabrag
+# 🤖 JabRag
 
-> A GitHub App built with [Probot](https://github.com/probot/probot) that A Probot app
+A [Probot](https://github.com/probot/probot) GitHub App that uses Retrieval Augmented Generation to answer questions about JabRef in GitHub discussions.
 
 ## Setup
 
-```sh
-# Install dependencies
-npm install
+### Dependencies
 
-# Run the bot
-npm start
-```
-
-## Docker
+You must install dependencies for both the bot and the Python backend. Do
 
 ```sh
-# 1. Build container
-docker build -t jabrag .
-
-# 2. Start container
-docker run -e APP_ID=<app-id> -e PRIVATE_KEY=<pem-value> jabrag
+$ npm install
+$ pip install -r requirements.txt
 ```
 
-## Contributing
+### Run
 
-If you have suggestions for how jabrag could be improved, or want to report a bug, open an issue! We'd love all and any contributions.
+To run the bot, do
 
-For more, check out the [Contributing Guide](CONTRIBUTING.md).
-
-## License
-
-[ISC](LICENSE) © 2025 McAuley Penney
+```sh
+$ npm start
+```
